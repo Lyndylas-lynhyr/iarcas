@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHIVE // 0x00</title>
+    <style>
+        /* 引入复古等宽字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --text-color: #a3a3a3;
+            --dim-color: #4a4a4a;
+            --highlight-color: #8ab4f8; /* 冰冷的终端蓝光 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            /* 边缘暗角效果 */
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+        }
+
+        /* 全局老式扫描线效果 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0) 50%, 
+                rgba(0, 0, 0, 0.3) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* 缓慢向下滚动的光带 */
+        body::after {
+            content: "";
+            position: absolute;
+            top: -100%; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(138, 180, 248, 0.03) 50%,
+                transparent 100%
+            );
+            animation: scan 8s linear infinite;
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* 顶部标识 */
+        .header-mark {
+            font-size: 0.8rem;
+            color: var(--dim-color);
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 10px;
+        }
+
+        /* 文本区域 */
+        .data-block {
+            font-size: 1.15rem;
+            line-height: 2.5;
+            letter-spacing: 1px;
+            white-space: pre-wrap;
+            text-shadow: 0 0 2px rgba(163, 163, 163, 0.2);
+            /* 轻微的屏幕呼吸闪烁 */
+            animation: flicker 4s infinite alternate;
+        }
+
+        /* 加粗特殊符号，略微突出 */
+        .data-block span {
+            color: var(--highlight-color);
+            opacity: 0.8;
+        }
+
+        /* 底部标识与光标 */
+        .footer-mark {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: var(--dim-color);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: var(--dim-color);
+            margin-left: 8px;
+            animation: blink 1.2s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 2px rgba(163, 163, 163, 0.2);
+            }
+            20%, 24%, 55% {
+                opacity: 0.8;
+                text-shadow: none;
+            }
+        }
+
+        /* 数字前面加上淡淡的序号感 */
+        .eq-num {
+            color: var(--dim-color);
+            font-size: 0.9rem;
+            margin-right: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-mark">
+        <span>DATA_FRAGMENT: 001</span>
+        <span>STATUS: ENCRYPTED</span>
+    </div>
+
+    <div class="data-block">
+<span class="eq-num">[01]</span> 1. zomat <span>×</span> genus = zaruk mē
+<span class="eq-num">[02]</span> 2. natsu mē goraiva + limē vhena 
+       = goraiva mē sirin
+<span class="eq-num">[03]</span> 3. e londe kodhr mē vhena - kodhr mē genus
+       = sirin mē zaruk
+<span class="eq-num">[04]</span> 4. sirin mē vos <span>÷</span> goraiva = limē kodhr
+<span class="eq-num">[05]</span> 5. vhena londe vi natsu + zaruk mē zomat
+       = vhena londe zomat mē vos
+<span class="eq-num">[06]</span> 6. (ni sirin ni e vhena + ni sirin ni e kodhr) 
+       <span>×</span> limē genus = limē
+    </div>
+
+    <div class="footer-mark">
+        <span>DECRYPTION REQUIRED</span>
+        <span class="cursor"></span>
+    </div>
+</div>
+
+</body>
+</html>
