@@ -1,11 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ode to Light</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #111;
+            color: #eee;
+            text-align: center;
+            font-family: sans-serif;
+            /* 让 body 至少一屏，并用纵向 flex 把链接压到底部 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main {
+            padding: 100px 20px 0;
+            box-sizing: border-box;
+        }
+
+        /* 撑开页面高度：必须滚动才能看到底部 */
+        .spacer {
+            height: 100vh;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            /* 底部留白 + 适配 iPhone 底部安全区 */
+            padding: 40px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+        }
+
+        .footer a {
+            display: inline-block;
+            /* 移动端最小可点区域 ≈ 44px 高 */
+            padding: 14px 12px;
+            min-width: 44px;
+            color: #eee;
+            text-decoration: none;
+            font-size: 15px;
+            letter-spacing: .12em;
+            opacity: .55;
+            transition: opacity .3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .footer a:hover,
+        .footer a:focus,
+        .footer a:active {
+            opacity: 1;
+        }
+
+        /* 小屏优化 */
+        @media (max-width: 480px) {
+            .main {
+                padding-top: 64px;
+            }
+            .spacer {
+                height: 80vh;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #111; color: #eee; text-align: center; padding-top: 100px; font-family: sans-serif;">
-    <h1>Access Granted.</h1>
-    <p>Welcome to Iarcas.</p>
+<body>
+
+    <div class="main">
+        <h1>Access Granted.</h1>
+        <p>Welcome to Iarcas.</p>
+    </div>
+
+    <!-- 这个空白块负责把链接顶到很下面 -->
+    <div class="spacer" aria-hidden="true"></div>
+
+    <div class="footer">
+        <a href="297-0913-0900.html">✧</a>
+    </div>
+
 </body>
 </html>
